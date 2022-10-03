@@ -41,7 +41,7 @@ class Customer(models.Model):
         (MEMBERSHIP_SILVER, 'silver'),
         (MEMBERSHIP_BRONZE, 'Bronze'),
     ]
-    giver_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=255)
@@ -49,6 +49,8 @@ class Customer(models.Model):
     membership = models.CharField(
         max_length=1, choices=MEMBERSHIP_CHOICE, default=MEMBERSHIP_SILVER)
 
+    class Meta:
+        db_table = 'db_customers_changed'
 
 class Order(models.Model):
     PAYMENT_STATUS_PENDING = 'P'
